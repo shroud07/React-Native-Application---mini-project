@@ -1,7 +1,5 @@
-import { Text } from "react-native";
+import { Redirect } from 'expo-router';
 
 export default function Home() {
-  return <Text style={{ fontSize: 20, color: "black", alignSelf: "center", marginTop: 50 }}>
-            Home
-        </Text>;
+  return <Redirect href="/(root)/(tabs)" />;
 }
