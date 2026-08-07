@@ -6,15 +6,17 @@ export default function TabsLayout() {
         <Tabs
             screenOptions={{
                 headerShown: false,
-                tabBarActiveTintColor: "#2563EB",
-                tabBarInactiveTintColor: "#6B7280",
+                tabBarActiveTintColor: "#4A9EFF",
+                tabBarInactiveTintColor: "#5C5F68",
                 tabBarStyle: {
+                    backgroundColor: "#FFFFFF",
+                    borderTopColor: "#E8E6DF",
                     height: 65,
                     paddingBottom: 8,
-                    paddingTop: 8,
+                    paddingTop: 4,
                 },
                 tabBarLabelStyle: {
-                    fontSize: 12,
+                    fontSize: 11,
                     fontWeight: "600",
                 },
             }}
@@ -26,6 +28,48 @@ export default function TabsLayout() {
                     tabBarIcon: ({ color, size, focused }) => (
                         <Ionicons
                             name={focused ? "home" : "home-outline"}
+                            size={size}
+                            color={color}
+                        />
+                    ),
+                }}
+            />
+
+            <Tabs.Screen
+                name="transactions"
+                options={{
+                    title: "Transactions",
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <Ionicons
+                            name={focused ? "list" : "list-outline"}
+                            size={size}
+                            color={color}
+                        />
+                    ),
+                }}
+            />
+
+            <Tabs.Screen
+                name="add-transactions"
+                options={{
+                    title: "Add",
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <Ionicons
+                            name={focused ? "add" : "add-outline"}
+                            size={size}
+                            color={color}
+                        />
+                    ),
+                }}
+            />
+
+            <Tabs.Screen
+                name="assistant"
+                options={{
+                    title: "Assistant",
+                    tabBarIcon: ({ color, size, focused }) => (
+                        <Ionicons
+                            name={focused ? "chatbubbles" : "chatbubbles-outline"}
                             size={size}
                             color={color}
                         />
@@ -46,6 +90,8 @@ export default function TabsLayout() {
                     ),
                 }}
             />
+
+            
         </Tabs>
     );
 }
