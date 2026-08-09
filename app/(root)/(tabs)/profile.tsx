@@ -1,15 +1,42 @@
-import { Text, View } from "react-native";
+import { useAuth, useUser } from "@clerk/expo";
+import { Text } from "@react-navigation/elements";
+import { useRouter } from "expo-router";
+import React from "react";
+import { Alert, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 
 export default function ProfileScreen() {
+
+    const { user } = useUser();
+    const { signOut } = useAuth();
+    const router = useRouter();
+
+    const handleSignOut = () => {
+        Alert.alert("Sign Out", "Are you sure you want to sign out?", [
+            {text: "Cancel", style: "cancel"},
+            {
+                text:"Sign out",
+                style: "destructive",
+                onPress: async () => {
+                    await signOut();
+                    router.replace("/sign-in");
+                }
+            }
+        ])
+    }
+
     return (
-        <View
-            style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
-            <Text>Profile Screen</Text>
-        </View>
+        <SafeAreaView
+            className="flex-1 bg-brand-body"
+            edges={["top"]}
+            >
+                <TouchableOpacity
+                    onPress={handleSignOut}>
+                        <Text>
+                            Log Out
+                        </Text>
+                </TouchableOpacity>
+        </SafeAreaView>
     );
 }
